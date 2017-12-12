@@ -9,8 +9,6 @@ namespace IndicatorsBot.ConsoleApp
     class Program
     {
         static bool enabled = true;
-        static double lastRSI = 0;
-        static bool upTrend = false;
 
         static void Main(string[] args)
         {
@@ -69,21 +67,19 @@ namespace IndicatorsBot.ConsoleApp
         {
             Console.ForegroundColor = ConsoleColor.Gray;
 
-            if ((!upTrend) && (e.RSI <= 70))
+            if (!e.UpTrend && (e.RSI <= 70))
             {
                 //bearishing
                 Console.ForegroundColor = ConsoleColor.Red;
             }
 
-            if ((upTrend) && (e.RSI >= 30))
+            if (e.UpTrend && (e.RSI >= 30))
             {
                 //bullishing
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
             Console.WriteLine($"{e.CloseDate.ToString("HH:mm:ss")} Last Trade: {e.ClosePrice} - RSI: {e.RSI}");
-
-            upTrend = (e.RSI > lastRSI);
         }
     }    
 }

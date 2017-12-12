@@ -313,5 +313,43 @@ namespace IndicatorsBot.Test
             Assert.AreEqual(33.08, lista[31].RSI);
             Assert.AreEqual(37.77, lista[32].RSI);
         }
+
+        [TestMethod]
+        public void Test_That_Uptrend_Is_Correct()
+        {
+            Assert.AreEqual(false, lista[0].UpTrend);
+            Assert.AreEqual(false, lista[1].UpTrend);
+            Assert.AreEqual(false, lista[2].UpTrend);
+            Assert.AreEqual(false, lista[3].UpTrend);
+            Assert.AreEqual(false, lista[4].UpTrend);
+            Assert.AreEqual(false, lista[5].UpTrend);
+            Assert.AreEqual(false, lista[6].UpTrend);
+            Assert.AreEqual(false, lista[7].UpTrend);
+            Assert.AreEqual(false, lista[8].UpTrend);
+            Assert.AreEqual(false, lista[9].UpTrend);
+            Assert.AreEqual(false, lista[10].UpTrend);
+            Assert.AreEqual(false, lista[11].UpTrend);
+            Assert.AreEqual(false, lista[12].UpTrend);
+            Assert.AreEqual(false, lista[13].UpTrend);
+            Assert.AreEqual(false, lista[14].UpTrend);
+            Assert.AreEqual(true, lista[15].UpTrend);
+            Assert.AreEqual(true, lista[16].UpTrend);
+            Assert.AreEqual(true, lista[17].UpTrend);
+            Assert.AreEqual(true, lista[18].UpTrend);
+            Assert.AreEqual(true, lista[19].UpTrend);
+            Assert.AreEqual(true, lista[20].UpTrend);
+            Assert.AreEqual(true, lista[21].UpTrend);
+            Assert.AreEqual(true, lista[22].UpTrend);
+            Assert.AreEqual(true, lista[23].UpTrend);
+            Assert.AreEqual(true, lista[24].UpTrend);
+            Assert.AreEqual(true, lista[25].UpTrend);
+            Assert.AreEqual(true, lista[26].UpTrend);
+            Assert.AreEqual(true, lista[27].UpTrend);
+            Assert.AreEqual(true, lista[28].UpTrend);
+            Assert.AreEqual(false, lista[29].UpTrend);
+            Assert.AreEqual(false, lista[30].UpTrend);
+            Assert.AreEqual(false, lista[31].UpTrend);
+            Assert.AreEqual(false, lista[32].UpTrend);
+        }
     }
 }

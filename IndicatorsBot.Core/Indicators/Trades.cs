@@ -64,6 +64,19 @@ namespace IndicatorsBot.Core.Indicators
                     trade.AverageLoss = ((this.Values[this.Values.Count - 1].AverageLoss * 13) + trade.Loss) / 14;
 
                     calculateRSI(trade);
+                    //calc trend based on the inclination
+                    double y1, y2;
+                    double x1, x2;
+
+                    x2 = this.Values.Count;
+                    x1 = x2 - 14;
+
+                    y2 = this.Values[this.Values.Count - 1].RSI;
+                    y1 = this.Values[this.Values.Count - 15].RSI;
+
+                    trade.Inclination = (y2 - y1) / (x2 - x1);
+
+                    trade.UpTrend = trade.Inclination > 0;
                 }
 
                 Values.Add(trade);

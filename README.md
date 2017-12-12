@@ -5,3 +5,7 @@ On the console app, it checks for cryptocurrency trades
 
 Usage: On a command shell, type in:
 dotnet IndicatorsBot.ConsoleApp.dll [Ticker]
+
+
+Version 0.1 - Reading RSI for the last 1 minute at Bitfinex. 
+			  For reading 5, 15, 60 minutes and so on, you just need to create threads that get the last trade price whithin those intervals and add it to another respective IndicatorsBot.Core.Indicators.Trades list.
