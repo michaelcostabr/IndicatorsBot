@@ -33,12 +33,12 @@ namespace IndicatorsBot.ConsoleApp
 
             Console.WriteLine($"Fetching trade data for {ticker.ToUpper()}...");
 
-            var trades = new Trades();
+            var trades = new RSI();
             var bfxReader = new Core.Exchanges.Bitfinex.TickerReader();
             var tickerHndl = new TickerHandler(bfxReader, trades);
 
             tickerHndl.OnError += tickerHndl_OnError;
-            tickerHndl.IndicatorReady += tickerHndl_IndicatorReady;
+            tickerHndl.RSIReady += tickerHndl_IndicatorReady;
             bfxReader.Enabled = true;
             Task.Run(async () =>
             {
@@ -63,7 +63,7 @@ namespace IndicatorsBot.ConsoleApp
             Console.WriteLine($"Finishing...");
         }
 
-        private static void tickerHndl_IndicatorReady(object sender, Trade e)
+        private static void tickerHndl_IndicatorReady(object sender, RSISignal e)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
 

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 namespace IndicatorsBot.Core.Indicators
 {
-    public class Trades
+    public class RSI
     {
-        private List<Trade> Values = new List<Trade>();
-        public EventHandler<Trade> IndicatorReady;
+        private List<RSISignal> Values = new List<RSISignal>();
+        public string Ticker { get; set; }
+        public EventHandler<RSISignal> IndicatorReady;
         public EventHandler<string> OnError;
 
-        public Trade this[int index]
+        public RSISignal this[int index]
         {
             get
             {
@@ -27,7 +28,7 @@ namespace IndicatorsBot.Core.Indicators
         {
             try
             {
-                var trade = new Trade() { CloseDate = TradeDate, ClosePrice = Price };
+                var trade = new RSISignal() { CloseDate = TradeDate, ClosePrice = Price };
                 if (this.Values.Count > 0)
                 {
 
@@ -80,7 +81,7 @@ namespace IndicatorsBot.Core.Indicators
                 }
 
                 Values.Add(trade);
-                IndicatorReady(this, trade);
+                IndicatorReady?.Invoke(this, trade);
             }
             catch (Exception ex)
             {
@@ -88,7 +89,7 @@ namespace IndicatorsBot.Core.Indicators
             }
         }
 
-        private void calculateRSI(Trade trade)
+        private void calculateRSI(RSISignal trade)
         {
             var rs = (double)(trade.AverageGain / trade.AverageLoss);
 

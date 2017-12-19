@@ -7,12 +7,12 @@ namespace IndicatorsBot.Core
 {
     public class TickerHandler
     {
-        private Trades _trades = null;
+        private RSI _trades = null;
         private IExchangeTickerReader _tickerReader = null;
-        public EventHandler<Trade> IndicatorReady;
+        public EventHandler<RSISignal> RSIReady;
         public EventHandler<string> OnError;
 
-        public TickerHandler(IExchangeTickerReader tickerReader, Trades trades)
+        public TickerHandler(IExchangeTickerReader tickerReader, RSI trades)
         {
             _trades = trades;
             _tickerReader = tickerReader;
@@ -30,9 +30,9 @@ namespace IndicatorsBot.Core
 
         private void _tickerReader_TickerReady(object sender, Ticker e) => _trades.Add(DateTime.Now, e.last_price);
 
-        private void _trades_IndicatorReady(object sender, Trade e)
+        private void _trades_IndicatorReady(object sender, RSISignal e)
         {            
-            IndicatorReady(this, e);
+            RSIReady(this, e);
         }
     }
 }

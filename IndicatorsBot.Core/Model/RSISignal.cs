@@ -1,10 +1,10 @@
-﻿using System;
+﻿using IndicatorsBot.Core.Indicators;
+using System;
 
 namespace IndicatorsBot.Core.Model
 {
-    public class Trade
+    public class RSISignal : ISignal
     {
-        public string Ticker { get; set; }
         public DateTime CloseDate { get; set; }
         public decimal ClosePrice { get; set; }
         public decimal Change { get; set; }

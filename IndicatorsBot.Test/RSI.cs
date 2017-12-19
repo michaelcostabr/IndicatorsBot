@@ -1,5 +1,4 @@
-﻿using IndicatorsBot.Core.Indicators;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace IndicatorsBot.Test
@@ -7,7 +6,7 @@ namespace IndicatorsBot.Test
     [TestClass]
     public class RSI
     {
-        Trades lista = new Trades();
+        Core.Indicators.RSI lista = new Core.Indicators.RSI();
 
         [TestInitialize]
         public void Initialize()
