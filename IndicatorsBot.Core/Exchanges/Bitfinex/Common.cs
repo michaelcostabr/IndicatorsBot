@@ -2,7 +2,13 @@
 {
     public static class Common
     {
-        public const int PoolingInterval = 4280; //provides 14 readings in a minute
+        public const int PoolingInterval = 60000;
         public const string BitFinexAPIAddress = "https://api.bitfinex.com/";
+
+        public const string CandleInterval1Min = "1m";
+        public const string CandleInterval5Min = "5m";
+        public const string CandleInterval15Min = "15m";
+        public const string CandleInterval30Min = "30m";
+        public const string CandleInterval60Min = "1h";
     }
 }

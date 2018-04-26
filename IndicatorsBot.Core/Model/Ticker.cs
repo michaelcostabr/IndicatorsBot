@@ -1,4 +1,6 @@
-﻿namespace IndicatorsBot.Core.Model
+﻿using System;
+
+namespace IndicatorsBot.Core.Model
 {
     public class Ticker
     {
@@ -10,6 +12,7 @@
         public decimal high;
         public decimal volume;
         public decimal timestamp;
+        public DateTime UtcDateTime;
     }
 
 }

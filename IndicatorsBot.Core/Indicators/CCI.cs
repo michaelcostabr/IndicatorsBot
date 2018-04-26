@@ -73,11 +73,6 @@ namespace IndicatorsBot.Core.Indicators
             }
         }
 
-        private void calculateCCI(CCISignal trade)
-        {
-            
-        }
-
         public int Count
         {
             get => this.Values.Count;
