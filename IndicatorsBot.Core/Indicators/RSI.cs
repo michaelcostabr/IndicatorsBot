@@ -1,6 +1,7 @@
 ﻿using IndicatorsBot.Core.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IndicatorsBot.Core.Indicators
 {
@@ -81,12 +82,28 @@ namespace IndicatorsBot.Core.Indicators
                 }
 
                 Values.Add(trade);
+
+                if (this.Values.Count > 27)
+                {
+                    calculateStochRSI(Values.Last());
+                }
+
                 IndicatorReady?.Invoke(this, trade);
             }
             catch (Exception ex)
             {
                 if (this.OnError != null) OnError(this, ex.Message);
             }
+        }
+
+        private void calculateStochRSI(RSISignal trade)
+        {
+            var last14 = this.Values.TakeLast(14);
+
+            double highestRSI = (from x in last14 select x.RSI).Max();
+            double lowestRSI = (from x in last14 select x.RSI).Min();
+
+            trade.StochRSI = Math.Round((trade.RSI - lowestRSI) / (highestRSI - lowestRSI), 2);
         }
 
         private void calculateRSI(RSISignal trade)

@@ -14,6 +14,7 @@ namespace IndicatorsBot.Core.Model
         public decimal AverageLoss { get; set; }
         public double RS { get; set; }
         public double RSI { get; set; }
+        public double StochRSI { get; set; }
         public double Inclination { get; set; }
         public bool UpTrend { get; set; }
     }

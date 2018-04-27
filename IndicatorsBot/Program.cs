@@ -64,7 +64,7 @@ namespace IndicatorsBot.ConsoleApp
                 tickerHndl = new TickerHandler(bfxReader, RSITrades);
                 tickerHndl.RSIReady += tickerHndl_RSI_IndicatorReady;
 
-                var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Common.CandleInterval1Min, 15);
+                var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Common.CandleInterval1Min, 28);
                 foreach (Ticker t in lista)
                 {
                     RSITrades.Add(t.UtcDateTime, t.last_price);
@@ -76,7 +76,7 @@ namespace IndicatorsBot.ConsoleApp
                 tickerHndl = new TickerHandler(bfxReader, CCITrades);
                 tickerHndl.CCIReady += tickerHndl_CCI_IndicatorReady;
 
-                var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Common.CandleInterval1Min, 100);
+                var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Common.CandleInterval1Min, 22);
                 foreach (Ticker t in lista)
                 {
                     CCITrades.Add(t.UtcDateTime,t.high, t.low, t.last_price);
@@ -124,7 +124,7 @@ namespace IndicatorsBot.ConsoleApp
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
-            Console.WriteLine($"{e.CloseDate.ToString("HH:mm:ss")} Last Trade: {e.ClosePrice} - RSI: {e.RSI}");
+            Console.WriteLine($"{e.CloseDate.ToString("HH:mm:ss")} Last Trade: {e.ClosePrice} - RSI: {e.RSI} - Stochastich RSI: {e.StochRSI}");
         }
 
         private static void tickerHndl_CCI_IndicatorReady(object sender, CCISignal e)

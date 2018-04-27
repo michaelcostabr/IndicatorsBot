@@ -350,5 +350,43 @@ namespace IndicatorsBot.Test
             Assert.AreEqual(false, lista[31].UpTrend);
             Assert.AreEqual(false, lista[32].UpTrend);
         }
+
+        [TestMethod]
+        public void Test_That_StochasticRSI_Is_Correct()
+        {
+            Assert.AreEqual(0, lista[0].StochRSI);
+            Assert.AreEqual(0, lista[1].StochRSI);
+            Assert.AreEqual(0, lista[2].StochRSI);
+            Assert.AreEqual(0, lista[3].StochRSI);
+            Assert.AreEqual(0, lista[4].StochRSI);
+            Assert.AreEqual(0, lista[5].StochRSI);
+            Assert.AreEqual(0, lista[6].StochRSI);
+            Assert.AreEqual(0, lista[7].StochRSI);
+            Assert.AreEqual(0, lista[8].StochRSI);
+            Assert.AreEqual(0, lista[9].StochRSI);
+            Assert.AreEqual(0, lista[10].StochRSI);
+            Assert.AreEqual(0, lista[11].StochRSI);
+            Assert.AreEqual(0, lista[12].StochRSI);
+            Assert.AreEqual(0, lista[13].StochRSI);
+            Assert.AreEqual(0, lista[14].StochRSI);
+            Assert.AreEqual(0, lista[15].StochRSI);
+            Assert.AreEqual(0, lista[16].StochRSI);
+            Assert.AreEqual(0, lista[17].StochRSI);
+            Assert.AreEqual(0, lista[18].StochRSI);
+            Assert.AreEqual(0, lista[19].StochRSI);
+            Assert.AreEqual(0, lista[20].StochRSI);
+            Assert.AreEqual(0, lista[21].StochRSI);
+            Assert.AreEqual(0, lista[22].StochRSI);
+            Assert.AreEqual(0, lista[23].StochRSI);
+            Assert.AreEqual(0, lista[24].StochRSI);
+            Assert.AreEqual(0, lista[25].StochRSI);
+            Assert.AreEqual(0, lista[26].StochRSI);
+            Assert.AreEqual(0.05, lista[27].StochRSI);
+            Assert.AreEqual(0.06, lista[28].StochRSI);
+            Assert.AreEqual(0.19, lista[29].StochRSI);
+            Assert.AreEqual(0.00, lista[30].StochRSI);
+            Assert.AreEqual(0.00, lista[31].StochRSI);
+            Assert.AreEqual(0.16, lista[32].StochRSI);
+        }
     }
 }
