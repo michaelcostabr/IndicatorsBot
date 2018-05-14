@@ -15,3 +15,5 @@ Version 0.2 - Handling CCI calculations. Just need to implement its use on the p
 Version 0.3 - Getting historical candles data, so it is not necessary to wait for X measures to get the first indicator ready.
 
 Version 0.4 - Calculating Stochastic RSI.
+
+Version 0.5 - Calculating Bollinger Bands.

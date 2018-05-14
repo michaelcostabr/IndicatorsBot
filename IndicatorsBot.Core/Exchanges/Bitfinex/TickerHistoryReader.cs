@@ -15,7 +15,6 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
     public class TickerHistoryReader
     {
         readonly HttpClient client = new HttpClient();
-        private string Route;
         private readonly string Address;
 
         public TickerHistoryReader() => Address = Common.BitFinexAPIAddress;
@@ -50,7 +49,7 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
 
         private Ticker GetQuoteByDate(string ticker, long unixEpochTime, out bool success)
         {            
-            Route = string.Format("v1/trades/{0}?timestamp={1}&limit_trades=1", ticker, unixEpochTime);
+            var Route = string.Format("v1/trades/{0}?timestamp={1}&limit_trades=1", ticker, unixEpochTime);
 
             HttpResponseMessage response = client.GetAsync(Address + Route).Result;
             response.EnsureSuccessStatusCode();

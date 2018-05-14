@@ -9,33 +9,42 @@ namespace IndicatorsBot.Core
     public class TickerHandler
     {
         //on the next verion, it's gonna be an interface
-        private RSI _rsi = null;
-        private CCI _cci = null;
-        private IExchangeTickerReader _tickerReader = null;
+        private readonly RSI _rsi = null;
+        private readonly CCI _cci = null;
+        private readonly BollingerBands _bband = null;
+        private readonly IExchangeTickerReader _tickerReader = null;
         public EventHandler<RSISignal> RSIReady;
         public EventHandler<CCISignal> CCIReady;
+        public EventHandler<BBandSignal> BBandReady;
         public EventHandler<string> OnError;
-
-        public TickerHandler(IExchangeTickerReader tickerReader, RSI trades)
+        public TickerHandler(IExchangeTickerReader tickerReader, RSI trades) 
         {
-            _rsi = trades;
             _tickerReader = tickerReader;
-
             _tickerReader.PoolingInterval = Common.PoolingInterval;
             _tickerReader.TickerReady += _tickerReader_TickerReady;
             _tickerReader.OnError += _tickerReader_OnError;
+            _rsi = trades;
             _rsi.IndicatorReady += _rsi_IndicatorReady;
         }
 
-        public TickerHandler(IExchangeTickerReader tickerReader, CCI trades)
+        public TickerHandler(IExchangeTickerReader tickerReader, CCI trades) 
         {
-            _cci = trades;
             _tickerReader = tickerReader;
-
             _tickerReader.PoolingInterval = Common.PoolingInterval;
             _tickerReader.TickerReady += _tickerReader_TickerReady;
             _tickerReader.OnError += _tickerReader_OnError;
+            _cci = trades;
             _cci.IndicatorReady += _cci_IndicatorReady;
+        }
+
+        public TickerHandler(IExchangeTickerReader tickerReader, BollingerBands trades) 
+        {
+            _tickerReader = tickerReader;
+            _tickerReader.PoolingInterval = Common.PoolingInterval;
+            _tickerReader.TickerReady += _tickerReader_TickerReady;
+            _tickerReader.OnError += _tickerReader_OnError;
+            _bband = trades;
+            _bband.IndicatorReady += _bband_IndicatorReady;
         }
 
         private void _tickerReader_OnError(object sender, string e)
@@ -47,6 +56,7 @@ namespace IndicatorsBot.Core
         {
             _rsi?.Add(DateTime.Now, e.last_price);
             _cci?.Add(DateTime.Now, e.high, e.low, e.last_price);
+            _bband?.Add(DateTime.Now, e.last_price);
         }
 
         private void _rsi_IndicatorReady(object sender, RSISignal e)
@@ -57,6 +67,11 @@ namespace IndicatorsBot.Core
         private void _cci_IndicatorReady(object sender, CCISignal e)
         {
             CCIReady(this, e);
+        }
+
+        private void _bband_IndicatorReady(object sender, BBandSignal e)
+        {
+            BBandReady(this, e);
         }
     }
 }

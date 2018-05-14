@@ -6,7 +6,7 @@ namespace IndicatorsBot.Test
     [TestClass]
     public class RSI
     {
-        Core.Indicators.RSI lista = new Core.Indicators.RSI();
+        readonly Core.Indicators.RSI lista = new Core.Indicators.RSI();
 
         [TestInitialize]
         public void Initialize()
