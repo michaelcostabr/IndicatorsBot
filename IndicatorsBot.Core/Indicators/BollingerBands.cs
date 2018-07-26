@@ -49,6 +49,23 @@ namespace IndicatorsBot.Core.Indicators
                     trade.LowerBandSMA = Math.Round(trade.SMA - trade.SD * 2, 2);
 
                     trade.BandWidth = Math.Round(trade.UpperBandSMA - trade.LowerBandSMA, 2);
+
+                    //calc trend based on the inclination
+                    decimal y1, y2;
+                    decimal x1, x2;
+
+                    x2 = this.Values.Count;
+                    x1 = x2 - 19;
+
+                    y2 = this.Values[this.Values.Count - 1].Price;
+                    y1 = this.Values[this.Values.Count - 19].Price;
+
+                    trade.Inclination = (y2 - y1) / (x2 - x1);
+
+                    trade.UpTrend = trade.Inclination > 0;
+
+                    var pos = (trade.Price - (decimal)trade.LowerBandSMA) / (decimal)(trade.UpperBandSMA - trade.LowerBandSMA);
+                    trade.Position = Math.Round(pos * 100, 4);
                 }
 
                 Values.Add(trade);

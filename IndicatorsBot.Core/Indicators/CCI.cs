@@ -54,7 +54,7 @@ namespace IndicatorsBot.Core.Indicators
                     double x1, x2;
 
                     x2 = this.Values.Count;
-                    x1 = x2 - 14;
+                    x1 = x2 - 19;
 
                     y2 = this.Values[this.Values.Count - 1].CCI;
                     y1 = this.Values[this.Values.Count - 19].CCI;

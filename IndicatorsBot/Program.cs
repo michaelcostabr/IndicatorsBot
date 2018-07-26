@@ -184,7 +184,20 @@ namespace IndicatorsBot.ConsoleApp
         private static void tickerHndl_BBand_IndicatorReady(object sender, BBandSignal e)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine($"{e.CloseDate.ToString("HH:mm:ss")} Last Trade: {e.Price} - Upper Band: {e.UpperBandSMA} - Middle Band: {e.SMA} - Lower Band: {e.LowerBandSMA} - Bandwidth: {e.BandWidth}");
+
+            if (!e.UpTrend && (e.Position <= (decimal)0.8))
+            {
+                //bearishing
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
+            if (e.UpTrend && (e.Position >= (decimal)0.2))
+            {
+                //bullishing
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
+            Console.WriteLine($"{e.CloseDate.ToString("HH:mm:ss")} Last Trade: {e.Price} - Upper Band: {e.UpperBandSMA} - Middle Band: {e.SMA} - Lower Band: {e.LowerBandSMA} - Bandwidth: {e.BandWidth} - Position: {e.Position}");
         }
     }    
 }

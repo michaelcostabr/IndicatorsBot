@@ -12,5 +12,8 @@ namespace IndicatorsBot.Core.Model
         public double UpperBandSMA { get; set; } //Upper Band 20-Day SMA + STDEV x 2
         public double LowerBandSMA { get; set; } //Lower Band 20-Day SMA - STDEV x 2
         public double BandWidth { get; set; } 
+        public decimal Inclination { get; set; }
+        public bool UpTrend { get; set; } 
+        public decimal Position { get; set; } //Position in the band 
     }
 }
