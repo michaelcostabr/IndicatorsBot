@@ -24,38 +24,13 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
 
         public async Task Start(string ticker)
         {
-            Route = string.Format("v1/pubticker/{0}", ticker);
-
             Enabled = true;
 
             while (Enabled)
             {
                 try
                 {
-                    HttpResponseMessage response = client.GetAsync(Address + Route).Result;
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = response.Content.ReadAsStringAsync().Result;
-
-                    dynamic stuff = JObject.Parse(responseBody);
-
-                    var handler = TickerReady;
-
-                    if (handler != null)
-                    {
-                        var args = new Ticker()
-                        {
-                            mid = stuff.mid,
-                            bid = stuff.bid,
-                            ask = stuff.ask,
-                            last_price = stuff.last_price,
-                            low = stuff.low,
-                            high = stuff.high,
-                            volume = stuff.volume,
-                            timestamp = stuff.timestamp
-                        };
-
-                        handler(this, args);
-                    }
+                    FetchTicker(ticker);
                 }
                 catch (Exception ex)
                 {
@@ -73,6 +48,36 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
                 }
 
                 await Task.Delay(PoolingInterval);
+            }
+        }
+
+        public void FetchTicker(string ticker)
+        {
+            Route = string.Format("v1/pubticker/{0}", ticker);
+
+            HttpResponseMessage response = client.GetAsync(Address + Route).Result;
+            response.EnsureSuccessStatusCode();
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+
+            dynamic stuff = JObject.Parse(responseBody);
+
+            var handler = TickerReady;
+
+            if (handler != null)
+            {
+                var args = new Ticker()
+                {
+                    mid = stuff.mid,
+                    bid = stuff.bid,
+                    ask = stuff.ask,
+                    last_price = stuff.last_price,
+                    low = stuff.low,
+                    high = stuff.high,
+                    volume = stuff.volume,
+                    timestamp = stuff.timestamp
+                };
+
+                handler(this, args);
             }
         }
 
