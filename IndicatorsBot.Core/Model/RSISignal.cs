@@ -17,5 +17,6 @@ namespace IndicatorsBot.Core.Model
         public double StochRSI { get; set; }
         public double Inclination { get; set; }
         public bool UpTrend { get; set; }
+        public bool UpTrendSRSI { get; set; }
     }
 }

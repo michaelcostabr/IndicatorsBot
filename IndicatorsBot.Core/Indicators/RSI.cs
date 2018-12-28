@@ -86,6 +86,19 @@ namespace IndicatorsBot.Core.Indicators
                 if (this.Values.Count > 27)
                 {
                     calculateStochRSI(Values.Last());
+                    //calc trend based on the inclination
+                    double y1, y2;
+                    double x1, x2;
+
+                    x2 = this.Values.Count;
+                    x1 = x2 - 14;
+
+                    y2 = this.Values[this.Values.Count - 1].StochRSI;
+                    y1 = this.Values[this.Values.Count - 15].StochRSI;
+
+                    trade.Inclination = (y2 - y1) / (x2 - x1);
+
+                    trade.UpTrendSRSI = trade.Inclination > 0;
                 }
 
                 if (this.Values.Count > 14)
