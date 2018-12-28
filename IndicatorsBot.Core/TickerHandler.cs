@@ -20,7 +20,7 @@ namespace IndicatorsBot.Core
         public TickerHandler(IExchangeTickerReader tickerReader, RSI trades) 
         {
             _tickerReader = tickerReader;
-            _tickerReader.PoolingInterval = Common.PoolingInterval;
+            _tickerReader.PoolingInterval = Consts.PoolingInterval;
             _tickerReader.TickerReady += _tickerReader_TickerReady;
             _tickerReader.OnError += _tickerReader_OnError;
             _rsi = trades;
@@ -30,7 +30,7 @@ namespace IndicatorsBot.Core
         public TickerHandler(IExchangeTickerReader tickerReader, CCI trades) 
         {
             _tickerReader = tickerReader;
-            _tickerReader.PoolingInterval = Common.PoolingInterval;
+            _tickerReader.PoolingInterval = Consts.PoolingInterval;
             _tickerReader.TickerReady += _tickerReader_TickerReady;
             _tickerReader.OnError += _tickerReader_OnError;
             _cci = trades;
@@ -40,7 +40,7 @@ namespace IndicatorsBot.Core
         public TickerHandler(IExchangeTickerReader tickerReader, BollingerBands trades) 
         {
             _tickerReader = tickerReader;
-            _tickerReader.PoolingInterval = Common.PoolingInterval;
+            _tickerReader.PoolingInterval = Consts.PoolingInterval;
             _tickerReader.TickerReady += _tickerReader_TickerReady;
             _tickerReader.OnError += _tickerReader_OnError;
             _bband = trades;

@@ -31,7 +31,7 @@ namespace IndicatorsBot.Core.Indicators
 
                 trade.TypicalPrice = Math.Round((trade.HighPrice + trade.LowPrice + trade.ClosePrice) / 3, 4);
 
-                 if (this.Values.Count >= 19)
+                if (this.Values.Count >= 19)
                 {
                     //calculate SMA
                     decimal sumOfPrices = trade.TypicalPrice;
@@ -65,7 +65,11 @@ namespace IndicatorsBot.Core.Indicators
                 }
 
                 Values.Add(trade);
-                IndicatorReady?.Invoke(this, trade);
+
+                if (this.Values.Count >= 19)
+                {
+                    IndicatorReady?.Invoke(this, trade);
+                }
             }
             catch (Exception ex)
             {

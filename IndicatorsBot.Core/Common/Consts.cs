@@ -1,6 +1,6 @@
 ﻿namespace IndicatorsBot.Core.Exchanges.Bitfinex
 {
-    public static class Common
+    public static class Consts
     {
         public const int PoolingInterval = 60000;
         public const string BitFinexAPIAddress = "https://api.bitfinex.com/";

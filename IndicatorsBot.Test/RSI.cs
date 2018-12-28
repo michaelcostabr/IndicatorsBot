@@ -44,7 +44,7 @@ namespace IndicatorsBot.Test
             lista.Add(DateTime.Parse("2010/01/28"), (decimal)43.42050000);
             lista.Add(DateTime.Parse("2010/01/29"), (decimal)42.66280000);
             lista.Add(DateTime.Parse("2010/02/01"), (decimal)43.13140000);
-            lista.Add(DateTime.Parse("2010/02/01"), (decimal)25);
+            lista.Add(DateTime.Parse("2010/02/02"), (decimal)25);
         }
 
         [TestMethod]

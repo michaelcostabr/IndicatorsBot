@@ -17,7 +17,7 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
         readonly HttpClient client = new HttpClient();
         private readonly string Address;
 
-        public TickerHistoryReader() => Address = Common.BitFinexAPIAddress;
+        public TickerHistoryReader() => Address = Consts.BitFinexAPIAddress;
 
         public static DateTime FromUnixTime(long unixTime)
         {

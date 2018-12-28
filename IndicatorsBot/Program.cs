@@ -98,7 +98,7 @@ namespace IndicatorsBot.ConsoleApp
             tickerHndl = new TickerHandler(bfxReader, BBandTrades);
             tickerHndl.BBandReady += tickerHndl_BBand_IndicatorReady;
 
-            var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Common.CandleInterval1Min, 22);
+            var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Consts.CandleInterval1Min, 22);
             foreach (Ticker t in lista)
             {
                 BBandTrades.Add(t.UtcDateTime, t.last_price);
@@ -111,7 +111,7 @@ namespace IndicatorsBot.ConsoleApp
             tickerHndl = new TickerHandler(bfxReader, CCITrades);
             tickerHndl.CCIReady += tickerHndl_CCI_IndicatorReady;
 
-            var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Common.CandleInterval1Min, 22);
+            var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Consts.CandleInterval1Min, 22);
             foreach (Ticker t in lista)
             {
                 CCITrades.Add(t.UtcDateTime, t.high, t.low, t.last_price);
@@ -124,7 +124,7 @@ namespace IndicatorsBot.ConsoleApp
             tickerHndl = new TickerHandler(bfxReader, RSITrades);
             tickerHndl.RSIReady += tickerHndl_RSI_IndicatorReady;
 
-            var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Common.CandleInterval1Min, 28);
+            var lista = hist.GetHistory("BTCUSD", Core.Exchanges.Bitfinex.Consts.CandleInterval1Min, 28);
             foreach (Ticker t in lista)
             {
                 RSITrades.Add(t.UtcDateTime, t.last_price);

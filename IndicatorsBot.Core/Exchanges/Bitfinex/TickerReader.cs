@@ -18,8 +18,8 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
         public int PoolingInterval { get; set; }
         public TickerReader()
         {
-            Address = Common.BitFinexAPIAddress;
-            PoolingInterval = Common.PoolingInterval;
+            Address = Consts.BitFinexAPIAddress;
+            PoolingInterval = Consts.PoolingInterval;
         }
 
         public async Task Start(string ticker)

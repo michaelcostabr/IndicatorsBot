@@ -69,7 +69,10 @@ namespace IndicatorsBot.Core.Indicators
                 }
 
                 Values.Add(trade);
-                IndicatorReady?.Invoke(this, trade);
+                if (this.Values.Count >= 19)
+                {
+                    IndicatorReady?.Invoke(this, trade);
+                }
             }
             catch (Exception ex)
             {

@@ -88,7 +88,10 @@ namespace IndicatorsBot.Core.Indicators
                     calculateStochRSI(Values.Last());
                 }
 
-                IndicatorReady?.Invoke(this, trade);
+                if (this.Values.Count > 14)
+                {
+                    IndicatorReady?.Invoke(this, trade);
+                }
             }
             catch (Exception ex)
             {

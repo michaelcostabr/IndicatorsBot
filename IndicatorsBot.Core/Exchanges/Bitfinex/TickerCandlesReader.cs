@@ -1,6 +1,5 @@
 ﻿using IndicatorsBot.Core.Model;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 
@@ -12,13 +11,7 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
         private string Route;
         private readonly string Address;
 
-        public TickerCandlesReader() => Address = Common.BitFinexAPIAddress;
-
-        public static DateTime FromUnixTime(long unixTime)
-        {
-            return epoch.AddSeconds(unixTime);
-        }
-        private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        public TickerCandlesReader() => Address = Consts.BitFinexAPIAddress;        
 
         public List<Ticker> GetHistory(string ticker, string period, int interval)
         {
@@ -42,7 +35,7 @@ namespace IndicatorsBot.Core.Exchanges.Bitfinex
                     low = stuff[i][4]
                 };
 
-                t.UtcDateTime = FromUnixTime((long)t.timestamp).ToLocalTime();
+                t.UtcDateTime = Core.Common.Utils.FromUnixTime((long)t.timestamp).ToLocalTime();
 
                 result.Add(t);
 
