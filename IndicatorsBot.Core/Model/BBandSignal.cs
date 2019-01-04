@@ -3,7 +3,7 @@ using System;
 
 namespace IndicatorsBot.Core.Model
 {
-    public class BBandSignal : ISignal
+    public class BBandSignal
     {
         public DateTime CloseDate { get; set; }
         public decimal Price { get; set; }

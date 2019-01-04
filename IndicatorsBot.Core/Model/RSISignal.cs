@@ -1,9 +1,8 @@
-﻿using IndicatorsBot.Core.Indicators;
-using System;
+﻿using System;
 
 namespace IndicatorsBot.Core.Model
 {
-    public class RSISignal : ISignal
+    public class RSISignal
     {
         public DateTime CloseDate { get; set; }
         public decimal ClosePrice { get; set; }

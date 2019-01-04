@@ -58,14 +58,14 @@ namespace IndicatorsBot.Core.Indicators
                     this.Values.ForEach(i => averageLoss += i.Loss);
                     trade.AverageLoss = averageLoss / 14;
 
-                    calculateRSI(trade);
+                    CalculateRSI(trade);
                 }
                 else if (this.Values.Count > 14)
                 {
                     trade.AverageGain = ((this.Values[this.Values.Count - 1].AverageGain * 13) + trade.Gain) / 14;
                     trade.AverageLoss = ((this.Values[this.Values.Count - 1].AverageLoss * 13) + trade.Loss) / 14;
 
-                    calculateRSI(trade);
+                    CalculateRSI(trade);
                     //calc trend based on the inclination
                     double y1, y2;
                     double x1, x2;
@@ -85,7 +85,7 @@ namespace IndicatorsBot.Core.Indicators
 
                 if (this.Values.Count > 27)
                 {
-                    calculateStochRSI(Values.Last());
+                    CalculateStochRSI(Values.Last());
                     //calc trend based on the inclination
                     double y1, y2;
                     double x1, x2;
@@ -112,7 +112,7 @@ namespace IndicatorsBot.Core.Indicators
             }
         }
 
-        private void calculateStochRSI(RSISignal trade)
+        private void CalculateStochRSI(RSISignal trade)
         {
             var last14 = this.Values.TakeLast(14);
 
@@ -122,7 +122,7 @@ namespace IndicatorsBot.Core.Indicators
             trade.StochRSI = Math.Round((trade.RSI - lowestRSI) / (highestRSI - lowestRSI), 2);
         }
 
-        private void calculateRSI(RSISignal trade)
+        private void CalculateRSI(RSISignal trade)
         {
             var rs = (double)(trade.AverageGain / trade.AverageLoss);
 

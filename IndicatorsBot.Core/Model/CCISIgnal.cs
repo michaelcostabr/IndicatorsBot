@@ -1,9 +1,8 @@
-﻿using IndicatorsBot.Core.Indicators;
-using System;
+﻿using System;
 
 namespace IndicatorsBot.Core.Model
 {
-    public class CCISignal : ISignal
+    public class CCISignal
     {
         public DateTime CloseDate { get; set; }
         public decimal HighPrice { get; set; }
